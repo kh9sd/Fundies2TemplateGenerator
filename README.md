@@ -9,12 +9,9 @@ Have a working version of Python 3 on your computer. Download this code
 above by clicking the green "Code" button and downloading the zip.
 
 ## Current input data setup
-After you unpack the zip folder, in the folder create a text file named
-`inputfile.txt`
-
-The program needs to be able to read the class structures in your Java file.
+The program needs to be able to get the class structures in your Java file.
 It's way beyond my ability to actually parse the Java file, but Eclipse can actually 
-provide a decent summary of it that we can use. 
+provide a decent summary of it that we can use, which is the Outline view
 
 Open `Window -> Show View -> Outline`
 from the options at the top. Then, click the top class you want to start with, scroll
