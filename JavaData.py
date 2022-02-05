@@ -1,17 +1,24 @@
 class JavaClass:
-    def __init__(self, name, fields, methods):
+    def __init__(self, name, fields=None, methods=None):
         self.name = name  # string
-        self.fields = fields  # Vars
-        self.methods = methods  # Methods
+        if fields:
+            self.fields = fields  # Vars
+        else:
+            self.fields = []
+
+        if methods:
+            self.methods = methods
+        else:
+            self.methods = []  # Methods
 
     def get_class_template(self):
-        result = ["Fields: "]
+        result = ["Fields:"]
         result.extend(("this." + field.template_entry()) for field in self.fields)
 
-        result.append("Methods: ")
+        result.append("Methods:")
         result.extend(("this." + method) for method in self.get_method_temps())
 
-        result.append("Methods for fields: ")
+        result.append("Methods for fields:")
 
         for field in self.fields:
             result.extend(("this." + field_method) for field_method in field.get_method_list())
