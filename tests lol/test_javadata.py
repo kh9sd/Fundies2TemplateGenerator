@@ -29,7 +29,7 @@ class MyTestCase(unittest.TestCase):
                                  f_sum_motifs,
                                  f_desc_list])
 
-    def test_something(self):
+    def test_get_class_template(self):
         self.assertEqual(self.t_conslomotif.get_class_template(), ['Fields:',
                                                                    'this.first ... IMotif',
                                                                    'this.rest ... ILoMotif',
