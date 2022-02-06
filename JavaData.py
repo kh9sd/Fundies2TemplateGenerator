@@ -28,6 +28,12 @@ class JavaClass:
     def get_method_temps(self):
         return (method.template_entry() for method in self.methods)
 
+    def add_field(self, field):
+        self.fields.append(field)
+
+    def add_method(self, method):
+        self.methods.append(method)
+
     def __str__(self):
         return self.name
 
