@@ -25,6 +25,9 @@ class JavaClass:
 
         return result
 
+    def custom_var_temp(self, var_name):
+        return [(var_name+"."+method) for method in self.get_method_temps()]
+
     def get_method_temps(self):
         return (method.template_entry() for method in self.methods)
 

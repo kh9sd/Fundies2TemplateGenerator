@@ -120,8 +120,8 @@ def parse_input_file(location):
     return str_class_dict
 
 
-def get_formatted_template(obj):
-    return "\n".join(obj.get_class_template())
+def get_formatted_temp(temp_list):
+    return "\n".join(temp_list)
 
 
 if __name__ == "__main__":
@@ -134,12 +134,28 @@ if __name__ == "__main__":
     # print(name_to_class_map)
     # print(get_formatted_template(name_to_class_map["ILoMotif"]))
     while True:
-        selection = input("\nWhat class would you like a template for?\n").strip()
+        choice = input("\nEnter 'c' to get a template for a class, "
+                       "enter 'p' to get a template for a method parameter\n").lower()
 
-        try:
-            target_class = name_to_class_map[selection]
-        except KeyError:
-            print("Invalid class name, retry\n")
+        if choice == "c":
+            target_class = input("\nWhat class would you like a template for?\n").strip()
 
-        print(get_formatted_template(target_class))
+            if target_class in name_to_class_map:
+                print(get_formatted_temp(name_to_class_map[target_class].get_class_template()))
+            else:
+                print("Invalid class name, returning to start\n")
+
+        elif choice == "p":
+            para_class = input("\nWhat class is your variable?\n").strip()
+
+            if para_class in name_to_class_map:
+                var_name = input("\nWhat is the name of your variable?\n")
+                print(get_formatted_temp(name_to_class_map[para_class].custom_var_temp(var_name)))
+            else:
+                print("Invalid class name, returning to start\n")
+
+        else:
+            print("\nInvalid option, try again")
+
+
     # print(get_formatted_template(name_to_class_map["ConsLoMotif"]))
