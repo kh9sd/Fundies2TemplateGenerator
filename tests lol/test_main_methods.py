@@ -52,7 +52,7 @@ class MyTestCase(unittest.TestCase):
                                      f_sum_motifs,
                                      f_desc_list])
 
-        self.assertEqual(get_formatted_template(t_conslomotif),
+        self.assertEqual(get_formatted_temp(t_conslomotif.get_class_template()),
 """Fields:
 this.first ... IMotif
 this.rest ... ILoMotif
