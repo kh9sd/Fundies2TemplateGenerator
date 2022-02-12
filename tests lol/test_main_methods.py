@@ -9,15 +9,16 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(get_trimmed_name("ConsLoMotif.first", "ConsLoMotif"), "first")
 
     def test_str_to_method(self):
-        self.assertEqual(process_str_to_method("descList(boolean)"),
+        self.assertEqual(process_method_str("descList(boolean)"),
                          ("descList", "boolean"))
-        self.assertEqual(process_str_to_method("sumMotifs()"),
+        self.assertEqual(process_method_str("sumMotifs()"),
                          ("sumMotifs", ""))
-        self.assertEqual(process_str_to_method("sumMotifs(amongus, int, sus)"),
+        self.assertEqual(process_method_str("sumMotifs(amongus, int, sus)"),
                          ("sumMotifs", "amongus, int, sus"))
 
     def test_find_category(self):
         self.assertEqual(find_category("ILoMotif"), Category.CLASS)
+        self.assertEqual(find_category("ILoMotif Bruh"), Category.CLASS)
         self.assertEqual(find_category("ConsLoMotif.first IMotif"), Category.FIELD)
         self.assertEqual(find_category("ConsLoMotif.ConsLoMotif(IMotif, ILoMotif)"), Category.CONSTRUCTOR)
         self.assertEqual(find_category("ConsLoMotif.ConsLoMotif()"), Category.CONSTRUCTOR)
@@ -68,7 +69,21 @@ this.rest.sumDiff() ... double
 this.rest.sumMotifs() ... int
 this.rest.descList(boolean) ... String""")
 
-        # I have no idea how to test with IO, so the big parse_input_file() is untested
+    def test_get_template_with_parse(self):
+        class_dict = parse_input_file("tester_text_input1.txt")
+
+        self.assertEqual(get_formatted_temp(class_dict["Spaceship"].get_class_template()),
+"""Fields:
+this.loc ... Location
+this.color ... Color
+this.speed ... int
+Methods:
+this.move(int, int) ... IGamePiece
+this.draw() ... WorldImage
+Methods for fields:
+this.loc.moveLocation(int, int) ... Location""")
+
+
 
 
 if __name__ == '__main__':

@@ -1,0 +1,27 @@
+IGamePiece
+IGamePiece.START_POSITION Location
+IGamePiece.move(int, int) IGamePiece
+IGamePiece.draw() WorldImage
+AGamePiece
+AGamePiece.loc Location
+AGamePiece.color Color
+AGamePiece.AGamePiece(Location, Color)
+AGamePiece.AGamePiece(Color)
+Invader AGamePiece
+Invader.bullets int
+Invader.size int
+Invader.Invader(Location, Color, int, int)
+Invader.Invader(Color, int, int)
+Invader.move(int, int) IGamePiece
+Invader.draw() WorldImage
+Spaceship AGamePiece
+Spaceship.speed int
+Spaceship.Spaceship(Location, Color, int)
+Spaceship.Spaceship(Color, int)
+Spaceship.move(int, int) IGamePiece
+Spaceship.draw() WorldImage
+Location
+Location.x int
+Location.y int
+Location.Location(int, int)
+Location.moveLocation(int, int) Location
