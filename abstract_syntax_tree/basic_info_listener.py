@@ -1,5 +1,5 @@
-from JavaParserListener import JavaParserListener
-from JavaParser import JavaParser
+from abstract_syntax_tree.JavaParserListener import JavaParserListener
+from abstract_syntax_tree.JavaParser import JavaParser
 
 
 #★ Point 3
@@ -30,7 +30,6 @@ class BasicInfoListener(JavaParserListener):
 
     # Enter a parse tree produced by JavaParser#methodDeclaration.
     def enterMethodDeclaration(self, ctx:JavaParser.MethodDeclarationContext):
-
         print("{0} {1} {2}".format(ctx.start.line, ctx.start.column, ctx.getText()))
         self.call_methods = []
 
