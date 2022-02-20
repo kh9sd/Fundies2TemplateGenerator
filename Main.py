@@ -1,4 +1,4 @@
-from abstract_syntax_tree.basic_info_listener import BasicInfoListener
+from abstract_syntax_tree.java_file_listener import JavaFileListener
 from antlr4 import FileStream, CommonTokenStream, ParseTreeWalker
 from abstract_syntax_tree.JavaLexer import JavaLexer
 from abstract_syntax_tree.JavaParser import JavaParser
@@ -18,7 +18,6 @@ def get_formatted_temp(temp_list):
 if __name__ == "__main__":
     # target_file_path = "C:\\Users\\kevin\\Desktop\\fundies 2 java\\EclipseWorkspace\\HW3\\src\\Strings.java"
     # target_file_path = "C:\\Users\\kevin\\Desktop\\fundies 2 java\\EclipseWorkspace\\HW4\\src\\Entertainment.java"
-    # target_file_path = "C:\\Users\\kevin\\Desktop\\Fundies2TemplateGenerator\\TourInfoServiceImpl.java"
 
     target_file_path = input("Where is your Java file located?\n")
 
@@ -28,7 +27,7 @@ if __name__ == "__main__":
     parser = JavaParser(stream)
 
     walker = ParseTreeWalker()
-    listener = BasicInfoListener()
+    listener = JavaFileListener()
     walker.walk(listener, parser.compilationUnit())
 
     name_to_class_map = listener.class_dict

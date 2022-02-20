@@ -4,7 +4,7 @@ from JavaData import JavaClass, Var, Method
 
 
 # ★ Point 3
-class BasicInfoListener(JavaParserListener):
+class JavaFileListener(JavaParserListener):
     # ★ Point 4
     def __init__(self):
         self.cur_class_name = None
