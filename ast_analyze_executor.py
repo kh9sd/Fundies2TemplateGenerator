@@ -14,6 +14,7 @@ def get_formatted_temp(temp_list):
 
 if __name__ == '__main__':
     target_file_path = "C:\\Users\\kevin\\Desktop\\fundies 2 java\\EclipseWorkspace\\HW3\\src\\Strings.java"
+    target_file_path = "C:\\Users\\kevin\\Desktop\\fundies 2 java\\EclipseWorkspace\\HW4\\src\\Entertainment.java"
     # target_file_path = "C:\\Users\\kevin\\Desktop\\Fundies2TemplateGenerator\\TourInfoServiceImpl.java"
     input_thing = FileStream(target_file_path)
     lexer = JavaLexer(input_thing)
@@ -29,7 +30,7 @@ if __name__ == '__main__':
     # for c in class_dict:
     #     print(c)
     #
-    ex_class = class_dict["ConsLoString"]
+    ex_class = class_dict["Magazine"]
     #
     # for meth in ex_class.methods:
     #     print(meth)
