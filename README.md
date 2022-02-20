@@ -1,6 +1,9 @@
 # Fundies2TemplateGenerator
 Generates template comments for the Northeastern Fundies 2 Java course
 
+***TODO: MAJOR REVISE OF README***
+
+
 **THIS IS NOT A FULLY AUTOMATED PROCESS**, though with some work it
 could approach it
 
