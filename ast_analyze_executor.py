@@ -25,4 +25,17 @@ if __name__ == '__main__':
     walker.walk(listener, parser.compilationUnit())
 
     class_dict = listener.class_dict
-    print(print(get_formatted_temp(class_dict["MtLoString"].get_class_template())))
+
+    # for c in class_dict:
+    #     print(c)
+    #
+    ex_class = class_dict["ConsLoString"]
+    #
+    # for meth in ex_class.methods:
+    #     print(meth)
+    # print(ex_class.methods)
+    # print(ex_class.fields[0].type)
+    # print(ex_class.fields[1].type)
+    # print(ex_class.fields[1].type is ex_class)
+
+    print(get_formatted_temp(ex_class.get_class_template()))

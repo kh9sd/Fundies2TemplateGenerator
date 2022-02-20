@@ -10,16 +10,7 @@ class BasicInfoListener(JavaParserListener):
         self.cur_class_name = None
         self.cur_class = None
         self.class_dict = {}
-        self.call_methods = []
-        self.ast_info = {
-            'packageName': '',
-            'className': '',
-            'implements': [],
-            'extends': '',
-            'imports': [],
-            'fields': [],
-            'methods': []
-        }
+
 
     def get_or_add_dict(self, j_type):
         if j_type not in self.class_dict:
@@ -58,6 +49,32 @@ class BasicInfoListener(JavaParserListener):
     #     import_class = ctx.qualifiedName().getText()
     #     self.ast_info['imports'].append(import_class)
 
+    def enterInterfaceDeclaration(self, ctx:JavaParser.InterfaceDeclarationContext):
+        self.cur_class_name = ctx.getChild(1).getText()
+        self.cur_class = self.get_or_add_dict(self.cur_class_name)
+
+        # size = ctx.getChildCount()
+        #
+        # for i in range(size - 1):  # last element is just gibberish for rest of class
+        #     cur_token = ctx.getChild(i)
+        #
+        #     if cur_token.getText() == "class":
+        #         self.cur_class_name = ctx.getChild(i + 1).getText()
+        #         self.cur_class = self.get_or_add_dict(self.cur_class_name)
+        #     elif cur_token.getText() == "extends":
+        #         self.cur_class.set_ancestor(self.get_or_add_dict(ctx.getChild(i + 1).getText()))
+
+    def enterInterfaceMethodDeclaration(self, ctx:JavaParser.InterfaceMethodDeclarationContext):
+        # print(ctx.getChildCount())
+        # print(ctx.getChild(0).getText())
+        # for thing in ctx.getChildren():
+        #     print(thing.getChildCount())
+        #     print(thing.getText())
+        #     for nested_thing in thing.getChildren():
+        #         print(nested_thing.getText())
+        for method in ctx.getChildren(): # have to actually iterate on the ctx to get the indiv. methods
+            self.enterMethodDeclaration(method)
+
     # Enter a parse tree produced by JavaParser#methodDeclaration.
     def enterMethodDeclaration(self, ctx:JavaParser.MethodDeclarationContext):
         method_return_type = ctx.getChild(0).getText()
@@ -77,7 +94,7 @@ class BasicInfoListener(JavaParserListener):
                 self.cur_class_name = ctx.getChild(i+1).getText()
                 self.cur_class = self.get_or_add_dict(self.cur_class_name)
             elif cur_token.getText() == "extends":
-                self.cur_class.set_ancestor(self.get_or_add_dict(ctx.getChild(i+1)))
+                self.cur_class.set_ancestor(self.get_or_add_dict(ctx.getChild(i+1).getText()))
 
             # print(ctx.getChild(i).getText())
 
@@ -137,17 +154,17 @@ class BasicInfoListener(JavaParserListener):
                 param_type = ctx.getChild(1).getChild(0).getChild(0).getText()
                 param_name = ctx.getChild(1).getChild(0).getChild(1).getText()
 
-                param_var = self.create_var(param_name, param_type)
+                # param_var = self.create_var(param_name, param_type)
 
-                result.append(param_var)
+                result.append(self.get_or_add_dict(param_type))
             elif params_child_count > 1:
                 for i in range(params_child_count):
                     if i % 2 == 0:
                         param_type = ctx.getChild(1).getChild(i).getChild(0).getText()
                         param_name = ctx.getChild(1).getChild(i).getChild(1).getText()
 
-                        param_var = self.create_var(param_name, param_type)
+                        # param_var = self.create_var(param_name, param_type)
 
-                        result.append(param_var)
+                        result.append(self.get_or_add_dict(param_type))
         return result
 
