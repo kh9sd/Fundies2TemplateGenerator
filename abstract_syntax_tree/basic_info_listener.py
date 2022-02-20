@@ -3,10 +3,9 @@ from abstract_syntax_tree.JavaParser import JavaParser
 from JavaData import JavaClass, Var, Method
 
 
-#★ Point 3
+# ★ Point 3
 class BasicInfoListener(JavaParserListener):
-
-    #★ Point 4
+    # ★ Point 4
     def __init__(self):
         self.cur_class_name = None
         self.cur_class = None
@@ -47,7 +46,6 @@ class BasicInfoListener(JavaParserListener):
         :param j_type: String
         :return: Method
         """
-
         return Method(ident, self.get_or_add_dict(j_type), paras_list)
 
     # #★ Point 5
@@ -67,40 +65,6 @@ class BasicInfoListener(JavaParserListener):
         para_list = self.parse_method_params_block(ctx.getChild(2))
 
         self.cur_class.add_method(self.create_method(method_name, method_return_type, para_list))
-
-
-        # print("fuck", ctx.formalParameters().getChild(1).getChild(0).getChild(1).getText())
-        # # delegate parameters to function
-        # print("shiot", ctx.getChild(0).getText())
-        # print("enterMethodDeclaration", ctx.identifier())
-        # print(f"{ctx.start.line} {ctx.start.column}")
-        # self.call_methods = []
-
-    # Exit a parse tree produced by JavaParser#methodDeclaration.
-    def exitMethodDeclaration(self, ctx:JavaParser.MethodDeclarationContext):
-        pass
-        # #★ Point 6
-        # c1 = ctx.getChild(0).getText()  # ---> return type
-        # c2 = ctx.getChild(1).getText()  # ---> method name
-        # # c3 = ctx.getChild(2).getText()  # ---> params
-        # params = self.parse_method_params_block(ctx.getChild(2))
-        #
-        # method_info = {
-        #     'returnType': c1,
-        #     'methodName': c2,
-        #     'params': params,
-        #     'callMethods': self.call_methods
-        # }
-        # self.ast_info['methods'].append(method_info)
-
-    # Enter a parse tree produced by JavaParser#methodCall.
-    def enterMethodCall(self, ctx:JavaParser.MethodCallContext):
-        pass
-
-        # #★ Point 7
-        # line_number = str(ctx.start.line)
-        # column_number = str(ctx.start.column)
-        # self.call_methods.append(line_number + ' ' + column_number + ' ' + ctx.parentCtx.getText())
 
     # Enter a parse tree produced by JavaParser#classDeclaration.
     def enterClassDeclaration(self, ctx:JavaParser.ClassDeclarationContext):
@@ -159,28 +123,6 @@ class BasicInfoListener(JavaParserListener):
         field_name = ctx.getChild(1).getText()
 
         self.cur_class.add_field(self.create_var(field_name, field_type))
-        # for i in ctx.getChildren():
-        #     print(i.getText())
-
-        # print("in enterFieldDecl", ctx.getChild(2).getText())
-        # field = {
-        #     'fieldType': ctx.getChild(0).getText(), # gets field type
-        #     'fieldDefinition': ctx.getChild(1).getText() # gets field name
-        # }
-        # self.ast_info['fields'].append(field)
-
-    # def parse_implements_block(self, ctx):
-    #     implements_child_count = int(ctx.getChildCount())
-    #     result = []
-    #     if implements_child_count == 1:
-    #         impl_class = ctx.getChild(0).getText()
-    #         result.append(impl_class)
-    #     elif implements_child_count > 1:
-    #         for i in range(implements_child_count):
-    #             if i % 2 == 0:
-    #                 impl_class = ctx.getChild(i).getText()
-    #                 result.append(impl_class)
-    #     return result
 
     def parse_method_params_block(self, ctx):
         params_exist_check = int(ctx.getChildCount())
