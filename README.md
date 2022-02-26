@@ -11,11 +11,11 @@ You will also have to install a Python package, `antlr4`. Use pip to install thi
 I'm talking about.
 
 ## Running the program
-Right click the `Main.py` and click `Edit with IDLE`. You can run 
+Right-click the `Main.py` and click `Edit with IDLE`. You can run 
 it on the Terminal, but I find copy-pasting to be easier this way. At the top then click `Run` -> `Run module`.
 
 The program will now ask for a path to the Java file you want a template for. On Windows, you should navigate to your
-Java file in the folder, shift right-click it, and hit "Copy as path". Now paste this in the Python program, it should
+Java file in its folder, shift right-click it, and hit "Copy as path". Now paste this in the Python program, it should
 look something like `"C:\Users\ SOME BLAH BLAH BLAH... .java"`. Before you hit enter, remove the quote marks around
 the path, so now you should have something like `C:\Users\... .java` entered. Now hit enter and let it run.
 
@@ -36,7 +36,7 @@ Hopefully you have a natural mistrust of this program that compels
 you to verify each template produced (so don't try to displace the blame if
 it spits out a wrong template that you didn't check, losing you points during grading).
 
-It should work for what we have learned so far as of HW 3, but Fundies will probably
+It should work for what we have learned so far as of HW 5, but Fundies will probably
 introduce more features of Java that might work weirdly with the script.
 From there the program will be in uncharted/broken territory.
 And no promises on whether I or anybody will patch this stuff in, 
@@ -57,7 +57,6 @@ about it.
    in templates in a different way
 3. methods with side-effects
    1. if the professors require that you note side-effects in the template,
-   this will 100% REQUIRE you to check it manually, pretty much no chance
-   of this being automated by the program
+   you are going to need to check this lol
 
 
