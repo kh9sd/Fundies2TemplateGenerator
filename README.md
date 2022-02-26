@@ -6,6 +6,10 @@ Have a working version of Python 3 on your computer.
 Download this code above by clicking the green "Code" button and selecting the zip option. Extract
 the files. The only files you have to concern yourself with is `Main.py`
 
+You will also have to install a Python package, `antlr4`. Use pip to install this with 
+`pip install antlr4-python3-runtime` on your command line, Google `pip` if you are unsure what 
+I'm talking about.
+
 ## Running the program
 Right click the `Main.py` and click `Edit with IDLE`. You can run 
 it on the Terminal, but I find copy-pasting to be easier this way. At the top then click `Run` -> `Run module`.
